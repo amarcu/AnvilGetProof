@@ -1,20 +1,17 @@
-## 
+## Anvil eth_getProof POC
 
-Test a basic account and storage proof retrieval for a simple mainnet contract: https://etherscan.io/address/0x68e21390E57612170f2a62Eb96aCd8579230c62c
-
-We will validate 1 storage slot at pos 0
+Basic account and storage proof retrieval for an arbitrary mainnet contract: https://etherscan.io/address/0x68e21390E57612170f2a62Eb96aCd8579230c62c
 
 ## Requirements
 
-Having installed [Foundry](https://github.com/gakonst/foundry) and [Node.js](https://nodejs.org/) is the minimum requirement to get started.
+- [Foundry](https://github.com/gakonst/foundry)
+- [pip3](https://stackoverflow.com/questions/34573159/how-can-i-install-pythons-pip3-on-my-mac)
 
-Run `make install` to install eth-brownie.
-
-Set a valid alchemy `RPC_URL` in .env
+1. Run `make` to install eth-brownie.
+2. Set a valid alchemy `RPC_URL` in .env (see `example.env`)
 
 ## Steps to reproduce
 
-Start anvil and run `make test-anvil`
-It should fail with `requests.exceptions.RequestException: RPC error -32603: Required data unavailable`
-
-Running `make test-alchemy` will return the proofs.
+1. Run anvil in forked mode by running `make anvil` in a separate terminal window
+2. Run `make test-alchemy` to verify that `eth_getProof` will return the correct proofs
+3. Run `make test-anvil` which fails with `requests.exceptions.RequestException: RPC error -32603: Required data unavailable`
